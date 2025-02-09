@@ -13,14 +13,14 @@ The container includes the following tools:
 - **IBM Cloud CLI Plugins**: Various plugins for IBM Cloud CLI, including:
   - Code Engine
   - Cloud Databases
-  - Cloud DNS Services
+  - DNS Services
   - Cloud Internet Services
   - Cloud Object Storage
   - Container Registry
   - Container Service
   - VPC Infrastructure
   - Schematics
-  - SoftLayer
+  - SoftLayer (Classic IaaS)
   - Transit Gateway
 - **OpenShift CLI**: Command-line tools for managing OpenShift clusters.
 - **Kubernetes CLI**: Command-line tool for interacting with Kubernetes clusters.
