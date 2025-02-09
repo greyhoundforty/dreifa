@@ -23,7 +23,7 @@ env:
   REGISTRY_NAMESPACE: dts-account
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.event.repository.name }}
-
+  GITHUB_SHA: ${{ github.sha }}
 
 jobs:
   build:
@@ -40,6 +40,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+
+      - name: Set short SHA
+        run: echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
+  
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
@@ -80,7 +84,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }},${{ env.REGISTRY }}/${{ env.REGISTRY_NAMESPACE }}/${{ env.IMAGE_NAME }}:latest
+          tags: latest,${{ env.SHORT_SHA }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
