@@ -11,4 +11,6 @@ blocks:
         - name: docker build
           commands:
             - checkout
-            - docker build -t your-image .
+            - docker build -t dreifa .
+      secrets:
+        - name: dts-ibmcloud-apikey
